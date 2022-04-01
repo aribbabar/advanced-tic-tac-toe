@@ -141,8 +141,6 @@
       combos.push(combo);
     }
 
-    console.table(combos)
-
     return combos;
   }
 
@@ -204,6 +202,7 @@
     background-color: rgba(0, 0, 0, 0.6);
     color: #fff;
     top: 0;
+    left: 0;
   }
 
   .overlay * {

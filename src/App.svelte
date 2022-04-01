@@ -38,16 +38,10 @@
 
 	main {
 		padding: 2rem;
-		background: #f0f8ff;
 		min-height: 80vh;
-	}
-
-	@media (min-width: 1000px) {
-		main {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-		}
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
 	footer {
@@ -55,6 +49,6 @@
 		align-items: center;
 		justify-content: center;
 		background-color: #e6e6fa;
-		min-height: 20vh;
+		min-height: 5vh;
 	}
 </style>
