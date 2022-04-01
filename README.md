@@ -1,4 +1,4 @@
-Play here: https://advanced-tic-d328t0pz3-aribbabar100-gmailcom.vercel.app/
+Play here: https://advanced-tic-tac-toe.vercel.app/
 
 It's a work in progres but I think I have the main logic down. I'm thinking about adding some server logic to my code, make the game multiplayer. Also need to fix up some styles!
 
