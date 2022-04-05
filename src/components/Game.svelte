@@ -151,7 +151,7 @@
 
 <div class="container" style={`grid-template-columns: repeat(${cols}, min-content)`}>
   {#each Array(rows * cols).fill().map((_, idx) => 0 + idx) as i}
-    <div class="box">
+    <div class="box" style="width: {(window.innerWidth / cols) - 20}px; height: {(window.innerWidth / cols - 20)}px">
       <img alt="" index={i} on:click|once={handleClick}>
     </div>
   {/each}
@@ -176,12 +176,13 @@
 <style>
   .container {
     display: grid;
-    gap: 1rem;
+    gap: 10px;
+    padding: 1rem;
   }
 
   .box {
-    width: 100px;
-    height: 100px;
+    max-width: 100px;
+    max-height: 100px;
     border: 1px solid #000;
     background: #fff;
   }

@@ -8,6 +8,7 @@
   let customRows = null;
   let customCols = null;
 
+  let invalidMsg = "Invalid Input!";
   let invalidInput = false;
 
   function setActiveBtn(rows, cols) {
@@ -20,10 +21,17 @@
   }
 
   function setCustomRows(rows) {
+    invalidMsg = "Invalid Input!";
+
     if(!rows.match(/\d|^$/)) {
       invalidInput = true;
     } else {
       invalidInput = false;
+    }
+
+    if(rows.match(/\d/) && parseInt(rows) > 10) {
+      invalidInput = true;
+      invalidMsg = "Input value can not be greater than 10!"
     }
 
     if(!invalidInput && rows != "") {
@@ -34,10 +42,17 @@
   }
 
   function setCustomCols(cols) {
+    invalidMsg = "Invalid Input!";
+
     if(!cols.match(/\d|^$/)) {
       invalidInput = true;
     } else {
       invalidInput = false;
+    }
+
+    if(cols.match(/\d/) && parseInt(cols) > 10) {
+      invalidInput = true;
+      invalidMsg = "Input value can not be greater than 10!"
     }
 
     if(!invalidInput && cols != "") {
@@ -73,7 +88,7 @@
   </div>
   <button class="btn" on:click={handleGo}>Go</button>
   {#if invalidInput}
-    <p class="invalid-text">Invalid Input!</p>
+    <p class="invalid-text">{invalidMsg}</p>
   {/if}
 </div>
 
