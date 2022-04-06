@@ -8,7 +8,6 @@
   let customRows = null;
   let customCols = null;
 
-  let invalidMsg = "Invalid Input!";
   let invalidInput = false;
 
   function setActiveBtn(rows, cols) {
@@ -21,17 +20,10 @@
   }
 
   function setCustomRows(rows) {
-    invalidMsg = "Invalid Input!";
-
     if(!rows.match(/\d|^$/)) {
       invalidInput = true;
     } else {
       invalidInput = false;
-    }
-
-    if(rows.match(/\d/) && parseInt(rows) > 10) {
-      invalidInput = true;
-      invalidMsg = "Input value can not be greater than 10!"
     }
 
     if(!invalidInput && rows != "") {
@@ -42,17 +34,10 @@
   }
 
   function setCustomCols(cols) {
-    invalidMsg = "Invalid Input!";
-
     if(!cols.match(/\d|^$/)) {
       invalidInput = true;
     } else {
       invalidInput = false;
-    }
-
-    if(cols.match(/\d/) && parseInt(cols) > 10) {
-      invalidInput = true;
-      invalidMsg = "Input value can not be greater than 10!"
     }
 
     if(!invalidInput && cols != "") {
@@ -66,8 +51,6 @@
     if(activeBtn.rows === 0 || activeBtn.cols === 0) {
       invalidInput = true;
     }
-
-    console.log(customRows, customCols)
     
     if(!invalidInput) {
       rows = activeBtn.rows;
@@ -78,17 +61,19 @@
 </script>
 
 <div class="container">
-  <button on:click={() => setActiveBtn(3, 3)} class:active-btn = {activeBtn.rows === 3 && activeBtn.cols === 3}>3 x 3</button>
-  <button on:click={() => setActiveBtn(6, 6)} class:active-btn = {activeBtn.rows === 6 && activeBtn.cols === 6}>6 x 6</button>
-  <button on:click={() => setActiveBtn(9, 9)} class:active-btn = {activeBtn.rows === 9 && activeBtn.cols === 9}>9 x 9</button>
-  <div class="custom-input-container">
-    <input type="text" bind:this={customRows} on:input={(e) => setCustomRows(e.target.value)}>
-    <p>x</p>
-    <input type="text" bind:this={customCols} on:input={(e) => setCustomCols(e.target.value)}>
-  </div>
-  <button class="btn" on:click={handleGo}>Go</button>
+  <form on:submit={handleGo}>
+    <button type="button" on:click={() => setActiveBtn(3, 3)} class:active-btn = {activeBtn.rows === 3 && activeBtn.cols === 3}>3 x 3</button>
+    <button type="button" on:click={() => setActiveBtn(6, 6)} class:active-btn = {activeBtn.rows === 6 && activeBtn.cols === 6}>6 x 6</button>
+    <button type="button" on:click={() => setActiveBtn(9, 9)} class:active-btn = {activeBtn.rows === 9 && activeBtn.cols === 9}>9 x 9</button>
+    <div class="custom-input-container">
+      <input type="text" bind:this={customRows} on:input={(e) => setCustomRows(e.target.value)}>
+      <p>x</p>
+      <input type="text" bind:this={customCols} on:input={(e) => setCustomCols(e.target.value)}>
+    </div>
+    <button class="btn" on:click={handleGo}>Go</button>
+  </form>
   {#if invalidInput}
-    <p class="invalid-text">{invalidMsg}</p>
+    <p class="invalid-text">Invalid Input!</p>
   {/if}
 </div>
 
@@ -99,15 +84,17 @@
     text-align: center;
   }
 
-  .container * {
-    max-width: 80vw;
-  }
-
   div * {
     font-size: 2rem;
   }
 
+  form * {
+    margin: 10px auto;
+  }
+
   button {
+    width: 100%;
+    display: block;
     border: none;
     background-color: #000;
     color: #fff;

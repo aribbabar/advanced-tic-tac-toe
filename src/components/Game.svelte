@@ -149,9 +149,14 @@
   }
 </script>
 
+{#if turn === "P1"}
+  <h2 class="turn-text">Player 1's turn</h2> 
+{:else}
+  <h2 class="turn-text">Player 2's turn</h2>
+{/if}
 <div class="container" style={`grid-template-columns: repeat(${cols}, min-content)`}>
   {#each Array(rows * cols).fill().map((_, idx) => 0 + idx) as i}
-    <div class="box" style="width: {(window.innerWidth / cols) - 20}px; height: {(window.innerWidth / cols - 20)}px">
+    <div class="box">
       <img alt="" index={i} on:click|once={handleClick}>
     </div>
   {/each}
@@ -178,11 +183,14 @@
     display: grid;
     gap: 10px;
     padding: 1rem;
+    overflow: scroll;
+    max-height: 100vh;
+    max-width: 100vw;
   }
 
   .box {
-    max-width: 100px;
-    max-height: 100px;
+    width: 50px;
+    height: 50px;
     border: 1px solid #000;
     background: #fff;
   }
@@ -222,5 +230,9 @@
 
   button:hover {
     background-color: rgb(60, 60, 60);
+  }
+
+  .turn-text {
+    padding: 1rem;
   }
 </style>

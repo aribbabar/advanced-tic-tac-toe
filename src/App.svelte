@@ -42,6 +42,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		flex-direction: column;
 	}
 
 	footer {
@@ -49,6 +50,9 @@
 		align-items: center;
 		justify-content: center;
 		background-color: #e6e6fa;
-		min-height: 5vh;
+	}
+
+	footer h3 {
+		padding: 1rem;
 	}
 </style>
